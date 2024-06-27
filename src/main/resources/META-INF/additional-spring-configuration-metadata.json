@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "spring.db2.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.db2.datasource.driver-class-name'"
+  },
+  {
+    "name": "spring.db1.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.db1.datasource.username'"
+  }
+]}
