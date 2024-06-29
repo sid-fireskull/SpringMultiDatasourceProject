@@ -10,15 +10,41 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	
+	public Book(String name) {
+		super();
+		this.name = name;
+	}
+	
+	public  Book() {
+		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + "]";
+	}
 	
 }

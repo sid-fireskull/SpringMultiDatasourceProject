@@ -44,7 +44,7 @@ public class DB1Config {
 		return builder.dataSource(dataSource)
 				  .properties(prop)
 				  .packages("com.multi.datasource.model.dbFirst")
-				  .persistenceUnit("User")
+				  .persistenceUnit("db1")
 				  .build();
 	}
     

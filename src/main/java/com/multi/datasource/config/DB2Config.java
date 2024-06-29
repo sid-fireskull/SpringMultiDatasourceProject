@@ -27,7 +27,6 @@ import jakarta.persistence.EntityManagerFactory;
 public class DB2Config {
 	
 	
-    @Primary
     @Bean(name = "bookDatasource")
     @ConfigurationProperties(prefix = "spring.db2.datasource")
     DataSource dataSource()
@@ -35,9 +34,9 @@ public class DB2Config {
 		return (DataSource) DataSourceBuilder.create().build();
 	}
     
-    @Primary
+ 
     @Bean(name = "bookEntityManagerFactory")
-    LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, @Qualifier("datasource") DataSource dataSource)
+    LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, @Qualifier("bookDatasource") DataSource dataSource)
 	{
 		HashMap<String, Object> prop = new HashMap<>();
 		prop.put("hibernate.hbm2ddl.auto", "update");
@@ -45,14 +44,13 @@ public class DB2Config {
 		return builder.dataSource(dataSource)
 				  .properties(prop)
 				  .packages("com.multi.datasource.model.dbSecond")
-				  .persistenceUnit("Book")
+				  .persistenceUnit("db2")
 				  .build();
 	}
     
     
-	@Primary
 	@Bean(name = "bookTransactionManager")
-	PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
+	PlatformTransactionManager transactionManager(@Qualifier("bookEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
 		return new JpaTransactionManager(entityManagerFactory);
 	}
     
