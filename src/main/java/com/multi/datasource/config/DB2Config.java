@@ -36,7 +36,8 @@ public class DB2Config {
     
  
     @Bean(name = "bookEntityManagerFactory")
-    LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, @Qualifier("bookDatasource") DataSource dataSource)
+    LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, 
+    		@Qualifier("bookDatasource") DataSource dataSource)
 	{
 		HashMap<String, Object> prop = new HashMap<>();
 		prop.put("hibernate.hbm2ddl.auto", "update");
